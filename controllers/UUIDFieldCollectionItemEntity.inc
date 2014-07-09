@@ -7,7 +7,7 @@
 
 /**
  * Overrides save functionality from FieldCollectionItemEntity.
- * 
+ *
  * Avoid exceptions when deploying a field_collection entity before its host
  * entity exists.
  */
@@ -24,6 +24,7 @@ class UUIDFieldCollectionItemEntity extends FieldCollectionItemEntity {
     else {
       // If there is no host entity, we may be receiving it from deploy.
       // so save the item directly.
+      $this->revision = TRUE;
       entity_get_controller($this->entityType)->save($this);
     }
   }
